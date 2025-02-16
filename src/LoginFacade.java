@@ -7,6 +7,7 @@ import otp.EmailNotifier;
 import otp.OTPObserver;
 import otp.OTPService;
 import otp.SMSNotifier;
+import session.SessionManager;
 import user.CustomerService;
 
 public class LoginFacade {
@@ -17,6 +18,7 @@ public class LoginFacade {
     private int otpAttempts;
     private static final int MAX_OTP_ATTEMPTS = 3;
     private MyLogger logger;
+    private SessionManager sessionManager;
 
     public LoginFacade() {
         scanner = new Scanner(System.in);
@@ -24,6 +26,7 @@ public class LoginFacade {
         otpService = new OTPService();
         otpAttempts = 0;
         logger = MyLogger.getInstance("file");
+        sessionManager = SessionManager.getInstance();
     }
 
     public boolean loginUser() {
@@ -47,6 +50,9 @@ public class LoginFacade {
                 String enteredOTP = promptForOTP();
                 if (otpService.validateOTP(enteredOTP)) {
                     logger.logInfo("User " + username + " logged in successfully.");
+                    sessionManager.createSession(username);
+                    System.out.println("Session started for user: " + username);
+
                     return true;
                 } else {
                     logger.logWarn("User " + username + " entered invalid OTP.");

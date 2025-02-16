@@ -1,1 +1,15 @@
 [2025-02-16 18:28:02] [INFO] User Dineth logged in successfully.
+[2025-02-16 20:12:49] [INFO] User Dineth entered password successfully.
+[2025-02-16 20:12:59] [INFO] User Dineth logged in successfully.
+[2025-02-16 20:13:06] [INFO] User Martha entered password successfully.
+[2025-02-16 20:13:10] [WARN] User Martha entered invalid OTP.
+[2025-02-16 20:13:12] [WARN] User Martha entered invalid OTP.
+[2025-02-16 20:13:14] [WARN] User Martha entered invalid OTP.
+[2025-02-16 20:13:14] [ERROR] User Martha exceeded maximum OTP attempts.
+[2025-02-16 20:48:55] [INFO] User Dineth entered password successfully.
+[2025-02-16 20:49:04] [INFO] User Dineth logged in successfully.
+[2025-02-16 20:49:57] [INFO] User Dineth entered password successfully.
+[2025-02-16 20:50:01] [WARN] User Dineth entered invalid OTP.
+[2025-02-16 20:50:03] [WARN] User Dineth entered invalid OTP.
+[2025-02-16 20:50:03] [WARN] User Dineth entered invalid OTP.
+[2025-02-16 20:50:03] [ERROR] User Dineth exceeded maximum OTP attempts.

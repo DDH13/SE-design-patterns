@@ -20,8 +20,8 @@ public class App {
             } else if (option == 2) {
                 try {
                     LoginFacade facade = new LoginFacade();
-                    facade.loginUser();
-                    facade.showDashboard();
+                    boolean success = facade.loginUser();
+                    if (success) facade.showDashboard();
                 } catch (Exception e) {
                     System.out.println("An error occurred: " + e.getMessage());
                 }
