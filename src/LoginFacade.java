@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import login.SecureLoginServiceProxy;
 import otp.AuthenticatorAppNotifier;
 import otp.EmailNotifier;
 import otp.OTPObserver;
@@ -29,7 +30,7 @@ public class LoginFacade {
             String password = promptForPassword();
 
             // Step 2: Validate username and password
-            if (!customerService.isValidUser(username, password)) {
+            if (!customerService.login(username, password, new SecureLoginServiceProxy())) {
                 System.out.println("Invalid username or password. Please try again.");
                 return false;
             }

@@ -1,5 +1,7 @@
 package user;
 
+import login.LoginService;
+
 public class CustomerService {
     public void saveCustomer(Customer customer) {
         System.out.println("Customer saved  in DB successfully!");
@@ -8,9 +10,9 @@ public class CustomerService {
         System.out.println("Checking if username exists in DB...");
         return false;
     }
-    public boolean isValidUser(String username, String password) {
+    public boolean login(String username, String password, LoginService loginService) {
         System.out.println("Validating user credentials...");
-        return true;
+        return loginService.login(username, password);
     }
     
 }
