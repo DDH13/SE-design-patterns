@@ -30,7 +30,7 @@ public class OnboardingFacade {
     public void registerCustomer() throws Exception {
         // Handle language preference, identifier selection, OTP generation, and customer registration
         selectLanguage();
-        String identifier = handleIdentifierSelection();
+        handleIdentifierSelection();
         selectCASAAccountNumber();
         handleOTPGeneration();
         selectVerificationMethod();

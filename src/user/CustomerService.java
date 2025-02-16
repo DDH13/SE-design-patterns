@@ -8,5 +8,9 @@ public class CustomerService {
         System.out.println("Checking if username exists in DB...");
         return false;
     }
+    public boolean isValidUser(String username, String password) {
+        System.out.println("Validating user credentials...");
+        return true;
+    }
     
 }
