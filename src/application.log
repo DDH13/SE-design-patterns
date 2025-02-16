@@ -13,3 +13,9 @@
 [2025-02-16 20:50:03] [WARN] User Dineth entered invalid OTP.
 [2025-02-16 20:50:03] [WARN] User Dineth entered invalid OTP.
 [2025-02-16 20:50:03] [ERROR] User Dineth exceeded maximum OTP attempts.
+[2025-02-16 20:53:00] [INFO] User Venudi entered password successfully.
+[2025-02-16 20:53:09] [INFO] User Venudi entered password successfully.
+[2025-02-16 20:53:12] [WARN] User Venudi entered invalid OTP.
+[2025-02-16 20:53:12] [WARN] User Venudi entered invalid OTP.
+[2025-02-16 20:53:13] [WARN] User Venudi entered invalid OTP.
+[2025-02-16 20:53:13] [ERROR] User Venudi exceeded maximum OTP attempts.

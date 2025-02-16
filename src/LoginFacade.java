@@ -46,13 +46,23 @@ public class LoginFacade {
             generateAndSendOTP();
 
             // Step 4: User enters OTP
+
+            // Check if account is locked
+            boolean locked = customerService.isAccountLocked(username);
+            if (locked && customerService.getLockedTime(username).getTime() > System.currentTimeMillis() - 300000) {
+                System.out.println("Account is locked for " + (System.currentTimeMillis() - customerService.getLockedTime(username).getTime()) / 1000
+                        + " seconds. Please try again later.");
+                return false;
+            } else if (locked) {
+                customerService.unlockCustomerAccount(username);
+            }
+
             while (otpAttempts < MAX_OTP_ATTEMPTS) {
                 String enteredOTP = promptForOTP();
                 if (otpService.validateOTP(enteredOTP)) {
                     logger.logInfo("User " + username + " logged in successfully.");
                     sessionManager.createSession(username);
                     System.out.println("Session started for user: " + username);
-
                     return true;
                 } else {
                     logger.logWarn("User " + username + " entered invalid OTP.");
@@ -63,6 +73,7 @@ public class LoginFacade {
 
             // If max attempts are reached
             System.out.println("Maximum OTP attempts reached. Login failed.");
+            customerService.lockCustomerAccount(username);
             logger.logError("User " + username + " exceeded maximum OTP attempts.");
         } catch (Exception e) {
             System.out.println("An error occurred during login: " + e.getMessage());
