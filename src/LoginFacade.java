@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import logger.MyLogger;
 import login.SecureLoginServiceProxy;
 import otp.AuthenticatorAppNotifier;
 import otp.EmailNotifier;
@@ -15,12 +16,14 @@ public class LoginFacade {
     private OTPService otpService;
     private int otpAttempts;
     private static final int MAX_OTP_ATTEMPTS = 3;
+    private MyLogger logger;
 
     public LoginFacade() {
         scanner = new Scanner(System.in);
         customerService = new CustomerService();
         otpService = new OTPService();
         otpAttempts = 0;
+        logger = MyLogger.getInstance("file");
     }
 
     public boolean loginUser() {
@@ -43,8 +46,10 @@ public class LoginFacade {
             while (otpAttempts < MAX_OTP_ATTEMPTS) {
                 String enteredOTP = promptForOTP();
                 if (otpService.validateOTP(enteredOTP)) {
+                    logger.logInfo("User " + username + " logged in successfully.");
                     return true;
                 } else {
+                    logger.logWarn("User " + username + " entered invalid OTP.");
                     otpAttempts++;
                     System.out.println("Invalid OTP. You have " + (MAX_OTP_ATTEMPTS - otpAttempts) + " attempts left.");
                 }
@@ -52,6 +57,7 @@ public class LoginFacade {
 
             // If max attempts are reached
             System.out.println("Maximum OTP attempts reached. Login failed.");
+            logger.logError("User " + username + " exceeded maximum OTP attempts.");
         } catch (Exception e) {
             System.out.println("An error occurred during login: " + e.getMessage());
         }
