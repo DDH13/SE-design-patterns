@@ -1,22 +1,16 @@
 package user;
-public class Customer extends User {
-    private String NIC;
-    private String passport;
-    private String CASAAccountNumber;
+public class Customer {
+    private String displayName;
+    private String username;
+    private String password;
 
     public Customer(String username, String password) {
-        super(username, password);
-    }
-    public Customer() {
-        super("default", "default");
+        this.username = username;
+        this.password = password;
     }
 
-    @Override
-    public void displayRole() {
-        System.out.println("I am a bank customer.");
-    }
-
-    public void onboardCustomer() {
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
 }

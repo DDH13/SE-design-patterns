@@ -27,6 +27,14 @@ public class OTPService {
             observer.updateOTP(latestOTP);
         }
     }
+
+    public boolean validateOTP(String otp) {
+        boolean result = otp.equals(latestOTP);
+        if (result) {
+            System.out.println("OTP is valid.");
+        } else {
+            System.out.println("OTP is invalid.");
+        }
+        return result;
+    }
 }
-
-

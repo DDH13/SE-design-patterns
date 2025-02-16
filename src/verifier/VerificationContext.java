@@ -15,19 +15,3 @@ public class VerificationContext {
         }
     }
 }
-
-
-// // Client Code
-// public class StrategyPatternExample {
-//     public static void main(String[] args) {
-//         VerificationContext context = new VerificationContext();
-
-//         // Customer chooses Call Center verification
-//         context.setStrategy(new CallCenterVerification());
-//         context.executeVerification();
-
-//         // Customer switches to Branch verification
-//         context.setStrategy(new BranchVerification());
-//         context.executeVerification();
-//     }
-// }
